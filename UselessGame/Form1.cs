@@ -5,11 +5,13 @@ namespace UselessGame
         private Random rand = new(DateTime.Now.Millisecond * DateTime.Now.Second.GetHashCode());
         private bool[,] buttonArray;
         private Button buttonTemplate;
+        private (int, int) cellSize;
         public Form1()
         {
             InitializeComponent();
-            buttonArray = new bool[Width, Height];
             buttonTemplate = button1;
+            cellSize = new(buttonTemplate.Width + buttonTemplate.Margin.Horizontal, buttonTemplate.Height + buttonTemplate.Margin.Vertical);
+            buttonArray = new bool[Width / cellSize.Item1, Height / cellSize.Item2];
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -19,8 +21,8 @@ namespace UselessGame
 
         private void RandomizePos(Control control)
         {
-            int x = rand.Next(control.Margin.Left + 3, Width - (control.Margin.Right + 3 + control.Width));
-            int y = rand.Next(control.Margin.Top + 3, Height - (control.Margin.Bottom + 3 + control.Height));
+            int x = rand.Next();
+            int y = rand.Next();
             control.Location = new Point(x, y);
         }
     }
