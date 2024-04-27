@@ -2,10 +2,14 @@ namespace UselessGame
 {
     public partial class Form1 : Form
     {
-        Random rand = new(DateTime.Now.Millisecond * DateTime.Now.Second.GetHashCode());
+        private Random rand = new(DateTime.Now.Millisecond * DateTime.Now.Second.GetHashCode());
+        private bool[,] buttonArray;
+        private Button buttonTemplate;
         public Form1()
         {
             InitializeComponent();
+            buttonArray = new bool[Width, Height];
+            buttonTemplate = button1;
         }
 
         private void button1_Click(object sender, EventArgs e)
