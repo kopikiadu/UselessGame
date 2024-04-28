@@ -22,6 +22,5 @@ namespace UselessGame
 
         public readonly CustomPoint Multiply(int factor) => new(X * factor, Y * factor);
 
-
     }
 }
